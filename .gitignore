@@ -123,5 +123,4 @@ work_dirs/
 cmd.txt
 coco_detection_scripts.py
 get_voc_xml.py
-#inference.py
 mul_inference_to_xml.py
