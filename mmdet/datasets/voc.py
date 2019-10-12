@@ -12,7 +12,7 @@ class VOCDataset(XMLDataset):
 
     def __init__(self, **kwargs):
         super(VOCDataset, self).__init__(**kwargs)
-	self.year=2012
+        self.year=2012
 #        if 'VOC2007' in self.img_prefix:
 #            self.year = 2007
 #        elif 'VOC2012' in self.img_prefix:
