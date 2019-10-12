@@ -60,7 +60,12 @@ class CustomDataset(Dataset):
                  corruption=None,
                  corruption_severity=1,
                  skip_img_without_anno=True,
+                 CLASSES=[],
                  test_mode=False):
+        
+        if len(CLASSES) > 0:
+            self.CLASSES = CLASSES
+
         # prefix of images path
         self.img_prefix = img_prefix
 
