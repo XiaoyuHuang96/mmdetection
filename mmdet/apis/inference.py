@@ -13,7 +13,7 @@ from mmdet.datasets.transforms import ImageTransform
 from mmdet.models import build_detector
 
 
-def init_detector(config, checkpoint=None, device='cuda:0'):
+def init_detector(config, checkpoint=None, device='cuda:0',num_cls=2):
     """Initialize a detector from config file.
 
     Args:
@@ -31,6 +31,8 @@ def init_detector(config, checkpoint=None, device='cuda:0'):
         raise TypeError('config must be a filename or Config object, '
                         'but got {}'.format(type(config)))
     config.model.pretrained = None
+
+    config.model.bbox_head.num_classes = num_cls+1
     model = build_detector(config.model, test_cfg=config.test_cfg)
     if checkpoint is not None:
         checkpoint = load_checkpoint(model, checkpoint)

@@ -4,7 +4,8 @@ from collections import OrderedDict
 
 import torch
 from mmcv.parallel import MMDataParallel, MMDistributedDataParallel
-from mmcv.runner import DistSamplerSeedHook, Runner, obj_from_dict
+from mmcv.runner import DistSamplerSeedHook, obj_from_dict
+
 
 from mmdet import datasets
 from mmdet.core import (CocoDistEvalmAPHook, CocoDistEvalRecallHook,
@@ -13,6 +14,7 @@ from mmdet.datasets import DATASETS, build_dataloader
 from mmdet.models import RPN
 from .env import get_root_logger
 
+from .myutils import OurRunner as Runner
 
 def parse_losses(losses):
     log_vars = OrderedDict()
