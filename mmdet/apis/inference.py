@@ -32,7 +32,11 @@ def init_detector(config, checkpoint=None, device='cuda:0',num_cls=2):
                         'but got {}'.format(type(config)))
     config.model.pretrained = None
 
+
+    # update model's output layer's num
     config.model.bbox_head.num_classes = num_cls+1
+
+
     model = build_detector(config.model, test_cfg=config.test_cfg)
     if checkpoint is not None:
         checkpoint = load_checkpoint(model, checkpoint)
