@@ -63,8 +63,10 @@ class CustomDataset(Dataset):
                  CLASSES=[],
                  test_mode=False):
 
+
         if len(CLASSES) > 0:
             self.CLASSES = CLASSES
+
         # prefix of images path
         self.img_prefix = img_prefix
 
