@@ -150,7 +150,11 @@ def _dist_train(model, dataset, cfg, validate=False):
     # build runner
     optimizer = build_optimizer(model, cfg.optimizer)
     runner = Runner(model, batch_processor, optimizer, cfg.work_dir,
-                    cfg.log_level)
+                    cfg.log_level,log_name=cfg.log_name)
+
+    # set log's name
+    # set model's name
+    runner.set_save_model_name(cfg.get('model_name', 'trainmodel.pth'))
 
     # fp16 setting
     fp16_cfg = cfg.get('fp16', None)
@@ -205,7 +209,12 @@ def _non_dist_train(model, dataset, cfg, validate=False):
     # build runner
     optimizer = build_optimizer(model, cfg.optimizer)
     runner = Runner(model, batch_processor, optimizer, cfg.work_dir,
-                    cfg.log_level)
+                    cfg.log_level,log_name=cfg.log_name)
+
+    # set log's name
+    # set model's name
+    runner.set_save_model_name(cfg.get('model_name', 'trainmodel.pth'))
+
     # fp16 setting
     fp16_cfg = cfg.get('fp16', None)
     if fp16_cfg is not None:
