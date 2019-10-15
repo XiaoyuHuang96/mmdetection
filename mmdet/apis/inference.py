@@ -153,6 +153,7 @@ def show_result(img,
         for i, bbox in enumerate(bbox_result)
     ]
     labels = np.concatenate(labels)
+
     mmcv.imshow_det_bboxes(
         img,
         bboxes,
@@ -164,6 +165,8 @@ def show_result(img,
         out_file=out_file)
     if not (show or out_file):
         return img
+
+
 
 
 def show_result_pyplot(img,
