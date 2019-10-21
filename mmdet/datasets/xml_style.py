@@ -20,7 +20,7 @@ class XMLDataset(CustomDataset):
         img_infos = []
         img_ids = mmcv.list_from_file(ann_file)
         for img_id in img_ids:
-            filename = 'JPEGImages/{}.jpg'.format(img_id)
+            
             xml_path = osp.join(self.img_prefix, 'Annotations',
                                 '{}.xml'.format(img_id))
             tree = ET.parse(xml_path)
@@ -28,6 +28,10 @@ class XMLDataset(CustomDataset):
             size = root.find('size')
             width = int(size.find('width').text)
             height = int(size.find('height').text)
+
+            fn=root.find('filename').text
+
+            filename = 'JPEGImages/{}'.format(fn)
             img_infos.append(
                 dict(id=img_id, filename=filename, width=width, height=height))
         return img_infos
